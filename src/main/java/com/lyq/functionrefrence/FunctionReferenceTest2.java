@@ -1,5 +1,6 @@
 package com.lyq.functionrefrence;
 
+import org.springframework.core.task.TaskDecorator;
 import scala.Int;
 
 import java.util.Date;
@@ -36,11 +37,18 @@ public class FunctionReferenceTest2 {
         //方法引用
         Supplier<Person> supplier4 = Person::new;
         System.out.println(supplier4.get().toString());
-        BiFunction<String,Integer,Person> biFunction = Person::new;
+        BiFunction<String, Integer, Person> biFunction = Person::new;
         System.out.println(biFunction.apply("lyq", 20));
 
         //数组：：构造器
-        
+        Function<Integer, String[]> function1 = len -> new String[len];
+        String[] arr = function1.apply(4);
+        System.out.println("arr length:" + arr.length);
+        //方法引用
+        Function<Integer, String[]> function2 = String[]::new;
+        String[] arr2 = function2.apply(5);
+        System.out.println("arr2 length:" + arr2.length);
+
     }
 }
 
@@ -49,8 +57,8 @@ class Person {
     private int age;
 
     public Person(String s, Integer integer) {
-        this.name=s;
-        this.age=integer;
+        this.name = s;
+        this.age = integer;
     }
 
     public Person() {
