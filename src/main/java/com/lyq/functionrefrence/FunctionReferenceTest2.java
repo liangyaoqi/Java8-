@@ -37,6 +37,10 @@ public class FunctionReferenceTest2 {
         Supplier<Person> supplier4 = Person::new;
         System.out.println(supplier4.get().toString());
         BiFunction<String,Integer,Person> biFunction = Person::new;
+        System.out.println(biFunction.apply("lyq", 20));
+
+        //数组：：构造器
+        
     }
 }
 
@@ -45,11 +49,12 @@ class Person {
     private int age;
 
     public Person(String s, Integer integer) {
-
+        this.name=s;
+        this.age=integer;
     }
 
     public Person() {
-        
+
     }
 
     public String getName() {
