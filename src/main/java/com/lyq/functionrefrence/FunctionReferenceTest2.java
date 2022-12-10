@@ -1,8 +1,12 @@
 package com.lyq.functionrefrence;
 
+import scala.Int;
+
 import java.util.Date;
 import java.util.Locale;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
@@ -15,7 +19,6 @@ public class FunctionReferenceTest2 {
         Date date = new Date();
         Supplier<Long> supplier = () -> date.getTime();
         System.out.println(supplier.get());
-
         //方法引用
         Supplier<Long> supplier1 = date::getTime;
 
@@ -24,6 +27,52 @@ public class FunctionReferenceTest2 {
         System.out.println(supplier2.get());
 
         //类名：：引用实例方法
+        Function<String, Integer> function = String::length;
+        System.out.println(function.apply("hello jdk8"));
+
+        //类名：：构造器
+        Supplier<Person> supplier3 = () -> new Person();
+        System.out.println(supplier3.get().toString());
+        //方法引用
+        Supplier<Person> supplier4 = Person::new;
+        System.out.println(supplier4.get().toString());
+        BiFunction<String,Integer,Person> biFunction = Person::new;
+    }
+}
+
+class Person {
+    private String name;
+    private int age;
+
+    public Person(String s, Integer integer) {
+
+    }
+
+    public Person() {
         
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
