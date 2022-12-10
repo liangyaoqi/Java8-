@@ -5,6 +5,15 @@ import java.util.function.Consumer;
 /**
  * 方法引用
  * 在lambada表达式中要执行的代码和我们定义的方法代码重复时，这时不用重写逻辑，直接引用方法就可以了
+ *
+ * 调用形式
+ *      对象：：方法名
+ *      类名：：静态方法
+ *      类名：：普通方法
+ *      new 类名：：new 调用的构造器
+ *
+ *  被引用的方法参数和接口中的抽象方法的参数一致
+ *  当接口抽象方法有返回值时，被引用的方法也必须要有返回值
  */
 public class FunctionReferenceTest {
     public static void main(String[] args) {
